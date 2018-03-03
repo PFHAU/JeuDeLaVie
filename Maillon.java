@@ -1,13 +1,13 @@
 package Projet;
 
 public class Maillon {
-    Coordoner c;
+    Object o;
     Maillon suivant;
-    public Maillon (Coordoner c,Maillon suivant){
-        this.c=c;
+    public Maillon (Object o,Maillon suivant){
+        this.o=o;
         this.suivant=suivant;
     }
-    public int compareTo (Maillon m) {
+   /* public int compareTo (Maillon m) {
         if (m.c.x < this.c.x) {
             return 1;
         } else {
@@ -27,9 +27,9 @@ public class Maillon {
                 }
             }
         } return 404;
-    }
+    }*/
 
-    public boolean estDans(Liste l){
+   /* public boolean estDans(Liste l){
         Maillon tmp=l.first;
         while (tmp.suivant.compareTo(null)==0){
             if (tmp.compareTo(this)==0){
@@ -38,6 +38,8 @@ public class Maillon {
             tmp=tmp.suivant;
         }
         return false;
-    }
+    }*/
+
+
 }
 
