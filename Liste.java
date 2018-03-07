@@ -22,6 +22,7 @@ public class Liste {
         Liste.first = first;
     }
 
+
     public String toString(){
         String string="";
         for(Maillon m= first; m!=null; m=m.suivant){
