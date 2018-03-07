@@ -1,13 +1,61 @@
 package Projet;
+import java.util.*;
 
 public class Maillon {
     Object o;
     Maillon suivant;
-    public Maillon (Object o,Maillon suivant){
-        this.o=o;
-        this.suivant=suivant;
+
+    public Maillon(Object o, Maillon suivant) {
+        this.o = o;
+        this.suivant = suivant;
     }
-   /* public int compareTo (Maillon m) {
+
+    public Object getO() {
+        return o;
+    }
+
+    public void setO(Object o) {
+        this.o = o;
+    }
+
+    public Maillon getSuivant() {
+        return suivant;
+    }
+
+    public void setSuivant(Maillon suivant) {
+        this.suivant = suivant;
+    }
+
+    public boolean equals(Maillon l) {
+        return l.o == this.o;
+    }
+
+    public void remove (Liste l){
+        Maillon tmp=l.first;
+        while (tmp.compareTo(null)==0){
+            if (tmp.suivant.compareTo(this)==0){
+                tmp.suivant=tmp.suivant.suivant;
+            }
+            tmp=tmp.suivant;
+        }
+    }
+
+    public boolean estDans(Liste l){
+        Maillon tmp=l.first;
+        while (tmp.suivant.compareTo(null)==0){
+            if (tmp.compareTo(this)==0){
+                return true;
+            }
+            tmp=tmp.suivant;
+        }
+        return false;
+    }
+
+    public int compareTo(Maillon m) {
+        return this.getO().compareTo(m.getO());
+    }
+}
+    /* public int compareTo (Maillon m) {
         if (m.c.x < this.c.x) {
             return 1;
         } else {
@@ -29,17 +77,8 @@ public class Maillon {
         } return 404;
     }*/
 
-   /* public boolean estDans(Liste l){
-        Maillon tmp=l.first;
-        while (tmp.suivant.compareTo(null)==0){
-            if (tmp.compareTo(this)==0){
-                return true;
-            }
-            tmp=tmp.suivant;
-        }
-        return false;
-    }*/
 
 
-}
+
+
 
