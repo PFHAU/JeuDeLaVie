@@ -27,7 +27,7 @@ public class Maillon {
     }
 
     public boolean equals(Maillon l) {
-        return l.o == this.o;
+        return l.getO() == this.getO();
     }
 
     public void remove (Liste l){
