@@ -2,21 +2,35 @@ package Projet;
 
 public class Methode {
 //comande de liste
-    public void add (Coordoner c){//methode a revoire car compliquer de faire un compare to neutre on peut faire un ad generique mais le tri est compliquer.
-        Maillon m= new Maillon(c,null);
-        if (Liste.first==null) Liste.first=m;
-        else{
-            Maillon tmp=Liste.first;
+   public void add (Coordoner c) {
+       Maillon m = new Maillon(c, null);
+       if (Liste.first == null) Liste.first = m;
+       else {
+           Maillon tmp = Liste.first;
 
-            while ((Coordoner) m.getO().compareTo((Coordoner) tmp.getO())==-1){// pourquoi ca marche pas ?
-                tmp=tmp.suivant;
+           while (m.compareTo(tmp) == -1) {
+               tmp = tmp.suivant;
+           }
+           m.suivant = tmp.suivant;
+           tmp.suivant = m;
+       }
+   }
+
+        public void addMaillon (Maillon m,Liste l){
+            if (l.first == null) l.first = m;
+            else {
+                Maillon tmp = l.first;
+
+                while (m.compareTo(tmp) == -1) {
+                    tmp = tmp.suivant;
+                }
+                m.suivant = tmp.suivant;
+                tmp.suivant = m;
             }
-            m.suivant=tmp.suivant;
-            tmp.suivant=m;
-        }
+       }
         /* last.suivant=m;
         last=m;*/
-    }
+    //}
    /* public void remove (Maillon m){
       /*if(vide()){
             throw new Exeption("liste vide");
