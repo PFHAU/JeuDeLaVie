@@ -30,29 +30,31 @@ public class Maillon {
         return l.getO() == this.getO();
     }
 
-    public void remove (Liste l){
-        Maillon tmp=l.first;
-        while (tmp.compareTo(null)==0){
-            if (tmp.suivant.compareTo(this)==0){
-                tmp.suivant=tmp.suivant.suivant;
+    public void remove(Liste l) {
+        Maillon tmp = l.first;
+        while (tmp.compareTo(null) == 0) {
+            if (tmp.suivant.compareTo(this) == 0) {
+                tmp.suivant = tmp.suivant.suivant;
             }
-            tmp=tmp.suivant;
+            tmp = tmp.suivant;
         }
     }
 
-    public boolean estDans(Liste l){
-        Maillon tmp=l.first;
-        while (tmp.suivant.compareTo(null)==0){
-            if (tmp.compareTo(this)==0){
+    public boolean estDans(Liste l) {
+        Maillon tmp = l.first;
+        while (tmp.suivant.compareTo(null) == 0) {
+            if (tmp.compareTo(this) == 0) {
                 return true;
             }
-            tmp=tmp.suivant;
+            tmp = tmp.suivant;
         }
         return false;
     }
 
-    public int compareTo(Maillon m) {
-        return this.getO().compareTo(m.getO());
+    public int compareTo(Object obj) {
+
+        return ((Maillon) this.o).compareTo(((Maillon) obj).o);
+
     }
 }
     /* public int compareTo (Maillon m) {

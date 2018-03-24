@@ -17,8 +17,27 @@ public class Coordoner {
         this.y=y+i;
     }
 
-    public int compareTo(Coordoner d){// a Faire, ici c'est un test.
-        return -1;
+    public int compareTo(Coordoner c){// a Faire, ici c'est un test.
+
+            if(this.getY()<c.getY()){
+                return -1;
+            }else{
+                if (this.getY()>c.getY()){
+                    return 1;
+                }else{
+                    if (this.getX()<c.getX()){
+                        return -1;
+                    }else{
+                        if(this.getX()>c.getX()){
+                            return 1;
+                        }else{
+                            return 0;
+                        }
+                    }
+                }
+            }
+
+
     }
 
     public int getX() {

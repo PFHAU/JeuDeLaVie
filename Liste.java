@@ -10,6 +10,10 @@ public class Liste {
 
     }
 
+    public Liste (Maillon m){
+        first=m;
+    }
+
     public boolean vide(){
         return first == null;
     }
@@ -26,7 +30,7 @@ public class Liste {
     public String toString(){
         String string="";
         for(Maillon m= first; m!=null; m=m.suivant){
-            string=string +String.valueOf(m.c)+""; //valueOf pour transformer en String
+           // string += String.valueOf(m.getO) + ""; //valueOf pour transformer en String
         }
         return string;
     }
