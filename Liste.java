@@ -15,7 +15,7 @@ public class Liste {
     		this.first=c;
     	}else{
     		Maillon tmp=this.first;
-    		if(tmp.compareTo(c)>=0){
+    		if(tmp.compareTo(c)<0){
     			c.setSuivant(tmp);
     			this.first=c;
     		}else{
@@ -24,7 +24,7 @@ public class Liste {
     			}else{
     				boolean b= true;
     				while(tmp.getSuivant()!=null){
-    					if(tmp.getSuivant().compareTo(c)<0){
+    					if(tmp.getSuivant().compareTo(c)>0){
     						tmp=tmp.getSuivant();
     					}else{
     						c.setSuivant(tmp.getSuivant());
