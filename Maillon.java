@@ -21,7 +21,7 @@ public class Maillon {
 		this.suivant = suivant;
 	}
 	public int compareTo(Object obj){
-		return ((Maillon) this.o).compareTo(((Maillon) obj).o);
+		return ((Coordoner) this.getO()).compareTo((Coordoner)((Maillon) obj).getO());
 	}
 
 
