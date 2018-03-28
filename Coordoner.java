@@ -19,10 +19,10 @@ public class Coordoner {
     			return 1;
     		}else{
     			if (this.getX()<c.getX()){
-    				return -1;
+    				return 1;
     			}else{
     				if(this.getX()>c.getX()){
-    					return 1;
+    					return -1;
     				}else{
     					return 0;
     				}
