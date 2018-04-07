@@ -1,7 +1,7 @@
 package Projet;
 import java.io.*;
 
-public class Liste {
+public class Liste <T extends Comparable> {
 
     public static Maillon first;
 
