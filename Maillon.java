@@ -1,7 +1,7 @@
 package Projet;
 import java.util.*;
 
-public class Maillon  <T extends Comparable<T>> {
+public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>> {
     T o;
     Maillon<T> suivant;
 
@@ -33,7 +33,7 @@ public class Maillon  <T extends Comparable<T>> {
     public void remove(Liste l) {
         Maillon tmp = l.first;
         while (tmp.compareTo(null) == 0) {
-            if (tmp.suivant.compareTo((T)this) == 0) {
+            if (tmp.suivant.compareTo(this) == 0) {
                 tmp.suivant = tmp.suivant.suivant;
             }
             tmp = tmp.suivant;
@@ -43,7 +43,7 @@ public class Maillon  <T extends Comparable<T>> {
    public boolean estDans(Liste l) {
         Maillon tmp = l.first;
         while (tmp.suivant.compareTo(null) == 0) {
-            if (tmp.compareTo((T) this) == 0) {
+            if (tmp.compareTo(this) == 0) {
                 return true;
             }
             tmp = tmp.suivant;
@@ -57,9 +57,9 @@ public class Maillon  <T extends Comparable<T>> {
       }
   }*/
 
-    public int compareTo(T obj) {
+    public int compareTo(Maillon<T> obj) {
 
-        return ((Maillon) this.o).compareTo(((Maillon) obj).o);
+        return (this.o).compareTo((obj).o);
 
    }
     /*public int compareTo(T obj,T obj2){
