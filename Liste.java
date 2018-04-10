@@ -8,7 +8,21 @@ public class Liste {
         first=null;
 
     }
-    
+   /* public void add (Maillon m) {
+        if (this.first == null) this.first = m;
+        else {
+            Maillon tmp = this.first;
+            while (tmp!=null && m.compareTo(tmp) == -1) {
+                tmp = tmp.getSuivant();
+            }
+            if(tmp!=null){
+            	m.setSuivant(tmp.getSuivant());
+            	tmp.setSuivant(m);
+            }else{
+            	
+            }
+        }
+    }*/
     public void add(Coordoner p){
     	Maillon c = new Maillon(p);
     	if (this.vide()){
@@ -23,7 +37,7 @@ public class Liste {
     				tmp.setSuivant(c);
     			}else{
     				boolean b= true;
-    				while(tmp.getSuivant()!=null){
+    				while(tmp.getSuivant()!=null && b){
     					if(tmp.getSuivant().compareTo(c)>0){
     						tmp=tmp.getSuivant();
     					}else{
