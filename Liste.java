@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Liste <T extends Comparable> {
 
-    public static Maillon first;
+    public Maillon first;
 
     public Liste (){
         first=null;
@@ -18,23 +18,23 @@ public class Liste <T extends Comparable> {
         return first == null;
     }
 
-    public static Maillon getFirst() {
+    public  Maillon getFirst() {
         return first;
     }
 
-    public static void setFirst(Maillon first) {
-        Liste.first = first;
+    public void setFirst(Maillon first) {
+        this.first = first;
     }
 
-    public void addMaillon (Maillon m,Liste l) {
-        if (l.first == null) l.first = m;
+    public void addMaillon (Maillon m) {//mettre en get et set suivant !!!!!!!!!
+        if (this.first == null) this.first = m;
         else {
-            Maillon tmp = l.first;
+            Maillon tmp = this.first;
             while (m.compareTo(tmp) == -1) {
-                tmp = tmp.suivant;
+                tmp = tmp.getSuivant();
             }
-            m.suivant = tmp.suivant;
-            tmp.suivant = m;
+            m.setSuivant(tmp.getSuivant());
+            tmp.setSuivant(m);
         }
     }
 
