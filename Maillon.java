@@ -2,15 +2,15 @@ package Projet;
 import java.util.*;
 
 public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>> {
-    T o;
-    Maillon<T> suivant;
+   private T o;
+   private Maillon suivant;
 
     public Maillon(T o, Maillon suivant) {
         this.o = o;
         this.suivant = suivant;
     }
 
-    public Object getO() {
+    public T getO() {
         return o;
     }
 
@@ -18,7 +18,7 @@ public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>>
         this.o = o;
     }
 
-    public Maillon getSuivant() {
+    public Maillon<T> getSuivant() {
         return suivant;
     }
 
@@ -31,17 +31,20 @@ public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>>
     }
 
     public void remove(Liste l) {
-        Maillon tmp = l.first;
-        while (tmp.compareTo(null) == 0) {
-            if (tmp.suivant.compareTo(this) == 0) {
-                tmp.suivant = tmp.suivant.suivant;
+        Maillon tmp = l.getFirst();
+        while (tmp!=null&& tmp.suivant!=null) {
+            if (tmp.compareTo(l.getFirst()) == 0) {
+                l.setFirst(l.getFirst().getSuivant());
+            }
+            if (tmp.getSuivant().compareTo(this) == 0) {
+                tmp.setSuivant(tmp.suivant.suivant);
             }
             tmp = tmp.suivant;
         }
     }
 
    public boolean estDans(Liste l) {
-        Maillon tmp = l.first;
+        Maillon tmp = l.getFirst();
         while (tmp.suivant.compareTo(null) == 0) {
             if (tmp.compareTo(this) == 0) {
                 return true;
@@ -59,7 +62,7 @@ public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>>
 
     public int compareTo(Maillon<T> obj) {
 
-        return (this.o).compareTo((obj).o);
+        return (this.o).compareTo(obj.o);
 
    }
     /*public int compareTo(T obj,T obj2){

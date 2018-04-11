@@ -1,6 +1,6 @@
 package Projet;
 
-public class Coordoner {
+public class Coordoner implements Comparable<Coordoner> {
 
     int x;
     int y;
@@ -17,18 +17,22 @@ public class Coordoner {
         this.y=y+i;
     }
 
-    public int compareTo(Coordoner c){// a Faire, ici c'est un test.
-
-            if(this.getY()<c.getY()){
+    public int compareTo(Coordoner c){
+     /*   if(this==null){return -2;}
+        if(c==null){return -2;}*/
+     if(c==null){
+         return 0;
+     }
+            if(this.getX()<c.getX()){
                 return -1;
             }else{
-                if (this.getY()>c.getY()){
+                if (this.getX()>c.getX()){
                     return 1;
                 }else{
-                    if (this.getX()<c.getX()){
+                    if (this.getY()<c.getY()){
                         return -1;
                     }else{
-                        if(this.getX()>c.getX()){
+                        if(this.getY()>c.getY()){
                             return 1;
                         }else{
                             return 0;
