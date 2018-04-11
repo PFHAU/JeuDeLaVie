@@ -1,69 +1,119 @@
-import java.io.*;
+package com.france.JeuDeLaVie;
 
-public class Liste {
 
-    private Maillon first;
+public class Liste <E extends Maillon>
+{
+    private E first;
 
-    public Liste (){
-        first=null;
-
-    }
-   /* public void add (Maillon m) {
-        if (this.first == null) this.first = m;
-        else {
-            Maillon tmp = this.first;
-            while (tmp!=null && m.compareTo(tmp) == -1) {
-                tmp = tmp.getSuivant();
-            }
-            if(tmp!=null){
-            	m.setSuivant(tmp.getSuivant());
-            	tmp.setSuivant(m);
-            }else{
-            	
-            }
-        }
-    }*/
-    public void add(Coordoner p){
-    	Maillon c = new Maillon(p);
-    	if (this.vide()){
-    		this.first=c;
-    	}else{
-    		Maillon tmp=this.first;
-    		if(tmp.compareTo(c)<0){
-    			c.setSuivant(tmp);
-    			this.first=c;
-    		}else{
-    			if(tmp.getSuivant()==null){
-    				tmp.setSuivant(c);
-    			}else{
-    				boolean b= true;
-    				while(tmp.getSuivant()!=null && b){
-    					if(tmp.getSuivant().compareTo(c)>0){
-    						tmp=tmp.getSuivant();
-    					}else{
-    						c.setSuivant(tmp.getSuivant());
-    						tmp.setSuivant(c);
-    						b=false;
-    					}
-    				}
-    				if (b){
-    					tmp.setSuivant(c);
-    				}
-    			}
-    		}
-    	}
+    public Liste ()
+    {
+        first = null;
     }
 
-    public boolean vide(){
-        return first == null;
-    }
-
-    public Maillon getFirst() {
+    public E getFirst() {
         return first;
     }
 
-    public void setFirst(Maillon first) {
+    public void setFirst(E first) {
         this.first = first;
     }
 
+    public Liste clone( )
+    {
+        Liste listeClone = new Liste ();
+        E temp = first;
+        while(temp!=null)
+        {
+            E temporaire = (E)(new Maillon<> (temp.getCoor (),null));
+            listeClone.add (temporaire);
+            temp= (E)temp.getSuivant ();
+        }
+        return listeClone;
+    }
+
+    public void add(E addition)
+    {
+        if(first == null || first.compareTo (addition)== -1)
+        {
+            E temp = first;
+            first = addition;
+            first.setSuivant (temp);
+        }
+
+        else
+        {
+            E temp = first;
+            while ( temp != null)
+            {
+                if( temp.getSuivant () != null)
+                {
+                    if(temp.compareTo (addition) > -1 &&  temp.getSuivant ().compareTo (addition) < 1)
+                    {
+                        E conteneur = (E)temp.getSuivant ();
+                        temp.setSuivant( addition);
+                        addition.setSuivant(conteneur);
+                        break;
+                    }
+                }
+                else
+                {
+                    temp.setSuivant( addition);
+                    break;
+                }
+                temp = (E) temp.getSuivant ();
+            }
+        }
+    }
+
+    public boolean estDans(E m)
+    {
+        E temp = first;
+        while (temp!=null)
+        {
+            if (temp.compareTo (m)==0)
+            {
+                return  true;
+            }
+            temp = (E)temp.getSuivant ();
+        }
+        return false;
+    }
+
+    public void supprimer (E m)
+    {
+        if (first.getCoor ().compareTo (m.getCoor ()) == 0)
+        {
+            first = (E) first.getSuivant ();
+        }
+        else
+        {
+            //tmp-dexièm élément de la liste
+            E tmp = (E) first.getSuivant ();
+            //tmpPrevious-premier élément
+            E précédent = first;
+
+            while (tmp != null)
+            {
+                if (tmp.getCoor ().compareTo (m.getCoor ()) == 0)
+                {
+                    précédent.setSuivant (tmp.getSuivant ());
+                    break;
+                }
+                précédent = (E) précédent.getSuivant ();
+                tmp = (E) tmp.getSuivant ();
+
+            }
+        }
+    }
+   /* public String toString()
+    {
+        String str = new String ();
+        E temp = first;
+        while (temp!=null)
+        {
+            str = str + temp.getCoor ().getX () + " " + temp.getCoor ().getY () + "\n";
+            temp=(E)temp.getSuivant();
+        }
+        return str;
+    }*/
 }

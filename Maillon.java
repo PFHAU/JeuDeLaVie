@@ -1,28 +1,36 @@
-public class Maillon {
-	private Object o;
-	private Maillon suivant;
-	public Maillon (Object o){
-		this.o=o;
-		this.suivant=null;
-	}
-	public Object getO() {
-		return o;
-	}
-
-	public void setO(Object o) {
-		this.o = o;
-	}
-
-	public Maillon getSuivant() {
-		return suivant;
-	}
-
-	public void setSuivant(Maillon suivant) {
-		this.suivant = suivant;
-	}
-	public int compareTo(Object obj){
-		return ((Coordoner) this.getO()).compareTo((Coordoner)((Maillon) obj).getO());
-	}
+package com.france.JeuDeLaVie;
 
 
+public class Maillon <T extends Comparable> implements Comparable
+{
+    private T c;
+    private Maillon <T> suivant;
+
+    public Maillon (T c, Maillon <T> suivant)
+    {
+        this.c = c;
+        this.suivant = suivant;
+    }
+
+    public T getCoor()
+    {
+        return c;
+    }
+
+    public Maillon <T> getSuivant()
+    {
+        return suivant;
+    }
+
+    public void setSuivant(Maillon <T> suivant)
+    {
+        this.suivant = suivant;
+    }
+
+
+    public int compareTo (Object temp)
+    {
+        Maillon<T> m = (Maillon<T>)temp;
+        return c.compareTo(m.getCoor ());
+    }
 }
