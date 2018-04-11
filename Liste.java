@@ -1,16 +1,16 @@
 package Projet;
 import java.io.*;
 
-public class Liste <T extends Comparable> {
+public class Liste <T extends Maillon> {
 
-    public Maillon first;
+    private T first;
 
     public Liste (){
         first=null;
 
     }
 
-    public Liste (Maillon m){
+    public Liste (T m){
         first=m;
     }
 
@@ -18,20 +18,20 @@ public class Liste <T extends Comparable> {
         return first == null;
     }
 
-    public  Maillon getFirst() {
+    public  T getFirst() {
         return first;
     }
 
-    public void setFirst(Maillon first) {
+    public void setFirst(T first) {
         this.first = first;
     }
 
-    public void addMaillon (Maillon m) {//mettre en get et set suivant !!!!!!!!!
+    public void addMaillon (T m) {
         if (this.first == null) this.first = m;
         else {
-            Maillon tmp = this.first;
+            T tmp = this.first;
             while (m.compareTo(tmp) == -1) {
-                tmp = tmp.getSuivant();
+                tmp = (T) tmp.getSuivant();
             }
             m.setSuivant(tmp.getSuivant());
             tmp.setSuivant(m);
@@ -40,11 +40,13 @@ public class Liste <T extends Comparable> {
 
 
     public String toString(){
-        String string="";
-        for(Maillon m= first; m!=null; m=m.suivant){
-           // string += String.valueOf(m.getO) + ""; //valueOf pour transformer en String
+
+       String string="";
+        for(T m= first; m!=null; m= (T) m.getSuivant()){
+            string += m.getO() + ""; //valueOf pour transformer en String
         }
         return string;
+
     }
 
 }

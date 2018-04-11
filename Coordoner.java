@@ -18,7 +18,11 @@ public class Coordoner implements Comparable<Coordoner> {
     }
 
     public int compareTo(Coordoner c){
-
+     /*   if(this==null){return -2;}
+        if(c==null){return -2;}*/
+     if(c==null){
+         return 0;
+     }
             if(this.getX()<c.getX()){
                 return -1;
             }else{
