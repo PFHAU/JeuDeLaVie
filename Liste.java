@@ -37,7 +37,42 @@ public class Liste <T extends Maillon> {
             tmp.setSuivant(m);
         }
     }
+    public void remove(Maillon m) {
+        Maillon tmp = this.getFirst();
+        while (tmp!=null&& tmp.getSuivant()!=null) {
+            if (tmp.compareTo(this.getFirst()) == 0) {
+                this.setFirst((T) this.getFirst().getSuivant());
+            }
+            if (tmp.getSuivant().compareTo(m) == 0) {
+                tmp.setSuivant(tmp.getSuivant().getSuivant());
+            }
+            tmp = tmp.getSuivant();
+        }
+    }
 
+    public boolean estDans(Maillon m) {
+        Maillon tmp = this.getFirst();
+        while (tmp.getSuivant().compareTo(null) == 0) {
+            if (tmp.compareTo(m) == 0) {
+                return true;
+            }
+            tmp = tmp.getSuivant();
+        }
+        return false;
+    }
+
+    public Liste clone( )
+    {
+        Liste listeClone = new Liste ();
+        T temp = first;
+        while(temp!=null)
+        {
+            T temporaire = (T)(new Maillon<> (temp.getO (),null));
+            listeClone.addMaillon (temporaire);
+            temp= (T)temp.getSuivant ();
+        }
+        return listeClone;
+    }
 
     public String toString(){
 
