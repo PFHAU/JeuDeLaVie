@@ -17,13 +17,15 @@ public class Jeu {
 		l.add(p3);
 		l.add(p4);
 		l.add(p5);
-
+		Coordoner start = new Coordoner(-2,4);
 		System.out.println("Ci aodzx 95s2");
 		afficher2(l);
 		System.out.println("Ci aodzx 95s2");
+		afficher(l,start);
 	}
 	
-	/*public static void afficher(Liste liste, Coordoner p){
+	public static void afficher(Liste liste, Coordoner p){
+		int size=10;
 		boolean b = true;
 		boolean f = true;
 		Maillon tmp= liste.getFirst();
@@ -37,8 +39,8 @@ public class Jeu {
 				tmp.getSuivant();
 			}
 		}
-		for(int i=p.getY(); i<p.getY()-10; i++){
-			for(int j=p.getX(); j<p.getX()+10; j++){
+		for(int i=p.getY(); i>p.getY()-size; i--){
+			for(int j=p.getX(); j<p.getX()+size; j++){
 				Maillon z = new Maillon(new Coordoner(j,i));
 				if(m==null){
 					System.out.print(".");
@@ -55,7 +57,7 @@ public class Jeu {
 			}
 			System.out.println();
 		}
-	}*/
+	}
 	
 	public static void afficher2(Liste liste){
 		int size= 10;
