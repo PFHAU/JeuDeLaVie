@@ -62,12 +62,17 @@ public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>>
 
     public int compareTo(Maillon<T> obj) {
 
-        return (this.o).compareTo(obj.o);
+        return this.o.compareTo(obj.o);
 
    }
     /*public int compareTo(T obj,T obj2){
         return ((Maillon) obj).o.compareTo(((Maillon) obj).o);
     }*/
+
+    public String toString(){
+        String str =new String();
+        return str = o.toString();
+    }
 
 }
     /* public int compareTo (Maillon m) {

@@ -52,7 +52,7 @@ public class Liste <T extends Maillon> {
 
     public boolean estDans(Maillon m) {
         Maillon tmp = this.getFirst();
-        while (tmp.getSuivant().compareTo(null) == 0) {
+        while (tmp.getSuivant()!=null) {
             if (tmp.compareTo(m) == 0) {
                 return true;
             }
@@ -61,7 +61,7 @@ public class Liste <T extends Maillon> {
         return false;
     }
 
-    public Liste clone( )
+    public Liste clone()
     {
         Liste listeClone = new Liste ();
         T temp = first;
@@ -77,11 +77,13 @@ public class Liste <T extends Maillon> {
     public String toString(){
 
        String string="";
-        for(T m= first; m!=null; m= (T) m.getSuivant()){
-            string += m.getO() + ""; //valueOf pour transformer en String
+        T temp=first;
+        while (temp!=null){
+            string=string+temp.toString()+ "\n";
+            temp=(T)temp.getSuivant();
+
         }
         return string;
-
     }
 
 }

@@ -59,5 +59,10 @@ public class Coordoner implements Comparable<Coordoner> {
     public void setY(int y) {
         this.y = y;
     }
+
+    public String toString(){
+        String str =x+" "+y;
+        return str;
+    }
 }
 

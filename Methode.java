@@ -1,6 +1,6 @@
 package Projet;
 
-public class Methode {
+
 //comande de liste
    /*public void add (Coordoner c) {
        Maillon m = new Maillon(c, null);
@@ -116,7 +116,7 @@ public class Methode {
 
     }*/
 
-    public void augmenterX(Object o, int i) {
+   /* public void augmenterX(Object o, int i) {
         Coordoner c = (Coordoner) o;
         c.setX(c.getX() + i);
         o = c;
@@ -126,11 +126,11 @@ public class Methode {
         Coordoner c = (Coordoner) o;
         c.setY(c.getY() + i);
         o = c;
-    }
+    }*/
 
 //faire une classe de tout ce qui est bon et leur demander de corriger pour le compareTo qui ne marche inexplicablement pas la haut
 
-    public class Methodes {
+   public class Methode {
         public static void affichage(Liste<Maillon> liste) {
             final int FRAME_SIZE = 10;
             for (int x = 1; x <= FRAME_SIZE; x++) {
@@ -157,7 +157,7 @@ public class Methode {
 
         }
 
-        public static void evolution(/*Liste listeStockage*//*) {*/
+        public static void evolution() {
             Liste<Maillon> tempListe = Data.stockage.clone();
             Maillon<Coordoner> tempMaillon = Data.stockage.getFirst();
 
@@ -198,7 +198,7 @@ public class Methode {
                         if (!Data.stockage.estDans(new Maillon<>(new Coordoner(xNear, yNear), null))) {
                             int count = 0;
 
-                            Maillon tempRecherche = Data.stockage.getFirst();
+                            Maillon<Coordoner> tempRecherche = Data.stockage.getFirst();
                             while (tempRecherche != null) {
                                 if (tempRecherche.getO().getX() <= (xNear + 1) && tempRecherche.getO().getX() >= (xNear - 1)
                                         && tempRecherche.getO().getY() <= (yNear + 1) && tempRecherche.getO().getY() >= (yNear - 1)) {
@@ -234,7 +234,7 @@ public class Methode {
 
             // System.out.println ("résultat");
             //supprimer les doublons
-            tempMaillon = Data.stockage.getFirst()
+            tempMaillon = Data.stockage.getFirst();
             while (tempMaillon != null) {
                 Maillon<Coordoner> tempMaillon1 = Data.stockage.getFirst();
                 int count = 0;
@@ -254,5 +254,4 @@ public class Methode {
 
         }
 
-    }
-}
+   }
