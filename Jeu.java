@@ -24,7 +24,7 @@ public class Jeu {
 		afficher(l,start);
 	}
 	
-	public static void afficher(Liste liste, Coordoner p){
+	/*public static void afficher(Liste liste, Coordoner p){
 		int size=10;
 		boolean b = true;
 		boolean f = true;
@@ -57,14 +57,14 @@ public class Jeu {
 			}
 			System.out.println();
 		}
-	}
+	}*/
 	
 	public static void afficher2(Liste liste){
-		int size= 10;
+		final int FRAME_SIZE= 10;
 		Maillon m =liste.getFirst();
 		Coordoner p= (Coordoner) m.getO();
-		for(int i=p.getY(); i>p.getY()-size; i--){
-			for(int j=p.getX(); j<p.getX()+size; j++){
+		for(int i=p.getY(); i>p.getY()-FRAME_SIZE; i--){
+			for(int j=p.getX(); j<p.getX()+FRAME_SIZE; j++){
 				Maillon z = new Maillon(new Coordoner(j,i));
 				if(m==null){
 					System.out.print(".");
