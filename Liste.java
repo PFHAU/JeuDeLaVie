@@ -105,15 +105,17 @@ public class Liste <E extends Maillon>
             }
         }
     }
-   /* public String toString()
+
+    public String toString()
     {
         String str = new String ();
         E temp = first;
         while (temp!=null)
         {
-            str = str + temp.getCoor ().getX () + " " + temp.getCoor ().getY () + "\n";
+            str = str + temp.toString ()  + "\n";
             temp=(E)temp.getSuivant();
         }
         return str;
-    }*/
+    }
+
 }

@@ -1,20 +1,30 @@
 package com.france.JeuDeLaVie;
 
+import java.io.IOException;
+
 public class JeuDeLaVie
 {
     public static void main(String[] args)
     {
-        //System.out.println (args[0]);
+
         if (args.length!=0)
         {
             switch (args[0])
             {
                 case "test":
                     Liste<Maillon> testListe = new Liste<> ();
+                     try{
+                         Methodes.lireFichier("C:\\Users\\Sony\\IdeaProjects\\src\\com\\france\\JeuDeLaVie\\data.lif");
+                     }
+                     catch (IOException e )
+                     {
+                         System.out.println ("Problems with file");
+                     }
+                    Methodes.affichage (Data.stockage);
+                    Methodes.mondeAvecFrontieres ();
+                    Methodes.affichage (Data.stockage);
 
-
-
-                    testListe.add (new Maillon (new Coordonner (10,10),null));
+                   /* testListe.add (new Maillon (new Coordonner (10,10),null));
                     testListe.add (new Maillon (new Coordonner (3,8),null));
                     testListe.add (new Maillon (new Coordonner (5,5),null));
                     testListe.add (new Maillon (new Coordonner (3,3),null));
@@ -24,11 +34,11 @@ public class JeuDeLaVie
                     System.out.println (testListe.toString ());
                     System.out.println ();
                     Data.stockage = testListe;
-                    Methodes.affichage(Data.stockage);
+                    Methodes.affichage (Data.stockage);
                     Methodes.evolution ();
-                    Methodes.affichage(Data.stockage);
+                    Methodes.affichage (Data.stockage);
                     Methodes.evolution ();
-                    Methodes.affichage(Data.stockage);
+                    Methodes.affichage (Data.stockage);*/
                     break;
                 case "-name":
                     afficherNoms();

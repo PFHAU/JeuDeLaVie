@@ -41,4 +41,10 @@ public class Coordonner implements Comparable {
                 return  404;
         }
     }
+
+    public String toString()
+    {
+        String str = x + " " + y ;
+        return  str;
+    }
 }

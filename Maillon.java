@@ -33,4 +33,10 @@ public class Maillon <T extends Comparable> implements Comparable
         Maillon<T> m = (Maillon<T>)temp;
         return c.compareTo(m.getCoor ());
     }
+
+    public String toString()
+    {
+        String str = new String ();
+        return str = c.toString ();
+    }
 }
