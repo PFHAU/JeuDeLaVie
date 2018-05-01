@@ -23,22 +23,6 @@ package Projet;
                         Methode.affichage (Data.stockage);
                         Methode.mondeAvecFrontieres ();
                         Methode.affichage (Data.stockage);
-
-                   /* testListe.add (new Maillon (new Coordonner (10,10),null));
-                    testListe.add (new Maillon (new Coordonner (3,8),null));
-                    testListe.add (new Maillon (new Coordonner (5,5),null));
-                    testListe.add (new Maillon (new Coordonner (3,3),null));
-                    testListe.add (new Maillon (new Coordonner (4,4),null));
-                    testListe.add (new Maillon (new Coordonner (4,5),null));
-                    testListe.add (new Maillon (new Coordonner (4,6),null));
-                    System.out.println (testListe.toString ());
-                    System.out.println ();
-                    Data.stockage = testListe;
-                    Methodes.affichage (Data.stockage);
-                    Methodes.evolution ();
-                    Methodes.affichage (Data.stockage);
-                    Methodes.evolution ();
-                    Methodes.affichage (Data.stockage);*/
                         break;
                     case "-name":
                         afficherNoms();
