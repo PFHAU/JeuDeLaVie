@@ -4,6 +4,7 @@ package Projet;
        /**
         * @author Khomenko Stepan
         * @param liste
+        * Liste dont l'on souhaite afficher les cellules
         */
         public static void affichage(Liste<Maillon> liste) {
             final int FRAME_SIZE = 10;

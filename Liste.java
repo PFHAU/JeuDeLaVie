@@ -16,6 +16,7 @@ public class Liste <T extends Maillon> {
     /**
      * @author Pierre-Francois Hau
      * @param m
+     * element m de type T que l'on souhaite placer en premiere element de la liste
      */
     public Liste (T m){
         first=m;
@@ -40,6 +41,7 @@ public class Liste <T extends Maillon> {
     /**
      * @author Pierre-Francois Hau
      * @param first
+     * element de type T que l'on souhaite placer a l'element first
      */
     public void setFirst(T first) {
         this.first = first;
@@ -48,6 +50,7 @@ public class Liste <T extends Maillon> {
     /**
      * @author Pierre-Francois Hau
      * @param m
+     * element de type T que l'on souhaite ajouter  la Liste souhaiter
      */
     public void addMaillon (T m) {
         if (this.first == null) this.first = m;
@@ -64,8 +67,9 @@ public class Liste <T extends Maillon> {
     /**
      * @author Pierre-Francois Hau
      * @param m
+     * element de type T que l'on souhaite retirer de la Liste souhaiter
      */
-    public void remove(Maillon m) {
+    public void remove(T m) {
         Maillon tmp = this.getFirst();
         while (tmp!=null&& tmp.getSuivant()!=null) {
             if (tmp.compareTo(this.getFirst()) == 0) {
@@ -81,9 +85,10 @@ public class Liste <T extends Maillon> {
     /**
      * @author Pierre-Francois Hau
      * @param m
+     * element de type T que dont l'on souhaite verifier la presence dans la liste souhaiter
      * @return un boolean
      */
-    public boolean estDans(Maillon m) {
+    public boolean estDans(T m) {
         Maillon tmp = this.getFirst();
         while (tmp.getSuivant()!=null) {
             if (tmp.compareTo(m) == 0) {
