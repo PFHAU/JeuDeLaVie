@@ -36,10 +36,36 @@ public class Methodes
 
     public static void affichage(Liste<Maillon> liste)
     {
-        final int FRAME_SIZE = 20;
-        for( int x = 1; x <= FRAME_SIZE; x++)
+        Maillon<Coordonner> tempMinMax = liste.getFirst ();
+        int xMin=tempMinMax.getCoor ().getX ();
+        int xMax = xMin;
+        int yMin = tempMinMax.getCoor ().getY ();
+        int yMax = yMin;
+        tempMinMax = tempMinMax.getSuivant ();
+        while(tempMinMax != null)
         {
-            for( int y = 1; y <= FRAME_SIZE; y++)
+           if (tempMinMax.getCoor ().getX () < xMin)
+           {
+               xMin = tempMinMax.getCoor ().getX ();
+           }
+           if (tempMinMax.getCoor ().getY () < yMin)
+           {
+               yMin = tempMinMax.getCoor ().getY ();
+           }
+           if (tempMinMax.getCoor ().getX () > xMax)
+           {
+               xMax = tempMinMax.getCoor ().getX ();
+           }
+           if (tempMinMax.getCoor ().getY () > yMax)
+           {
+               yMax = tempMinMax.getCoor ().getY ();
+           }
+           tempMinMax = tempMinMax.getSuivant ();
+        }
+
+        for( int x = xMin; x <= xMax; x++)
+        {
+            for( int y = yMin; y <= yMax; y++)
             {
                 Maillon<Coordonner> temp = liste.getFirst ();
                 boolean marque = false;
@@ -67,7 +93,7 @@ public class Methodes
         System.out.println ();
 
     }
-
+/*
     public  static void mondeCirculaire(Liste<Maillon> liste)
     {
         //размеры поля
@@ -80,43 +106,110 @@ public class Methodes
         }
         xWidth=((Coordonner)(temp.getCoor ())).getX ()-xWidth;
         yHigh=((Coordonner)(temp.getCoor ())).getY ()-yHigh;
+
+        int xStart = ((Coordonner)(liste.getFirst ().getCoor ())).getX () ;
+        int yStart=((Coordonner)(liste.getFirst ().getCoor ())).getY () ;
+
+
+
+        Liste<Maillon> tempListe = Data.stockage.clone ();
+        Maillon<Coordonner> tempMaillon =  Data.stockage.getFirst ();
+
+        //definir ce qu'il faut supprimer
+        while (tempMaillon!=null)
+        {
+            int count = 0;
+            int x = tempMaillon.getCoor ().getX ();
+            int y = tempMaillon.getCoor ().getY ();
+            int xFromOtherSide;
+            //int yFromOtherSide;
+
+            if (x-1<xStart)
+            {
+                Maillon<Coordonner> tempRecherche = Data.stockage.getFirst ();
+                while (tempRecherche != null) {
+
+                    if ((tempRecherche.getCoor ().getX () == (x + 1) ||
+                            tempRecherche.getCoor ().getX () == x ||
+                            tempRecherche.getCoor ().getX () == xStart+xWidth)
+                            &&
+                            (
+                            tempRecherche.getCoor ().getY () <= (y + 1) && tempRecherche.getCoor ().getY () >= (y - 1)
+                            )) {
+                        count++;
+                    }
+                    tempRecherche = tempRecherche.getSuivant ();
+                }
+            }
+            else if()
+            {}
+            else {
+                Maillon<Coordonner> tempRecherche = Data.stockage.getFirst ();
+                while (tempRecherche != null) {
+
+                    if (tempRecherche.getCoor ().getX () <= (x + 1) && tempRecherche.getCoor ().getX () >= (x - 1)
+                            && tempRecherche.getCoor ().getY () <= (y + 1) && tempRecherche.getCoor ().getY () >= (y - 1)) {
+                        count++;
+                    }
+                    tempRecherche = tempRecherche.getSuivant ();
+                }
+            }//on supprime le maillon pour lequel on a cherché les voisins car on l'a aussi calculé comme un voisin
+            count--;
+
+            if (!(count == 2 || count == 3))
+            {
+                tempListe.supprimer (tempMaillon);
+            }
+            tempMaillon = tempMaillon.getSuivant ();
+        }
+
+        Liste<Maillon> tempListeAdd = new Liste();
+        tempMaillon =  Data.stockage.getFirst ();
+        while (tempMaillon != null)
+        {
+            int x = tempMaillon.getCoor ().getX()-1;
+            int y = tempMaillon.getCoor ().getY()-1;
+            for (int i = 0; i<3; i++)
+            {
+                for (int j = 0; j<3; j++)
+                {
+                    int xNear=x+j;
+                    int yNear=y+i;
+                    if (!Data.stockage.estDans(new Maillon<> (new Coordonner (xNear,yNear),null)))
+                    {
+                        int count = 0;
+
+                        Maillon<Coordonner> tempRecherche = Data.stockage.getFirst ();
+                        while (tempRecherche != null)
+                        {
+                            if (tempRecherche.getCoor ().getX() <= (xNear+1) && tempRecherche.getCoor ().getX() >= (xNear-1)
+                                    && tempRecherche.getCoor ().getY() <= (yNear+1) && tempRecherche.getCoor ().getY() >= (yNear-1) )
+                            {
+                                count++;
+                            }
+                            tempRecherche = tempRecherche.getSuivant ();
+                        }
+                        if ( count == 3)
+                        {
+                            tempListeAdd.add (new Maillon (new Coordonner (xNear,yNear),null));
+                        }
+                    }
+                }
+            }
+            tempMaillon = tempMaillon.getSuivant ();
+        }
+
+        Data.stockage = tempListe;
+        Maillon<Coordonner> tempMaillonAdd = tempListeAdd.getFirst ();
+        while (tempMaillonAdd!=null)
+        {
+            Data.stockage.add (new Maillon (new Coordonner (tempMaillonAdd.getCoor ().getX (),tempMaillonAdd.getCoor ().getY ()),null));
+            tempMaillonAdd= tempMaillonAdd.getSuivant ();
+        }
+
+        supprimerDublons ();
         //
-    }
-
-    public static void mondeAvecFrontieres() {
-        int sizePlace = 10;
-        int xStart = ((Coordonner) (Data.stockage.getFirst ().getCoor ())).getX ();
-        int yStart = ((Coordonner) (Data.stockage.getFirst ().getCoor ())).getY ();
-
-        Maillon<Coordonner> tempMaillon = Data.stockage.getFirst ();
-        while (tempMaillon != null)
-        {
-            int x = tempMaillon.getCoor ().getX ();
-            int y = tempMaillon.getCoor ().getY ();
-            if (x<xStart||y<yStart||x>xStart+sizePlace||y>yStart+sizePlace)
-            {
-                Data.stockage.supprimer (tempMaillon);
-            }
-            tempMaillon = tempMaillon.getSuivant ();
-        }
-        affichage (Data.stockage);
-        evolution();
-        affichage (Data.stockage);
-
-        tempMaillon = Data.stockage.getFirst ();
-        while (tempMaillon != null)
-        {
-            int x = tempMaillon.getCoor ().getX ();
-            int y = tempMaillon.getCoor ().getY ();
-            if (x<xStart||y<yStart||x>xStart+sizePlace||y>yStart+sizePlace)
-            {
-                Data.stockage.supprimer (tempMaillon);
-            }
-            tempMaillon = tempMaillon.getSuivant ();
-        }
-        affichage (Data.stockage);
-    }
-
+    }*/
     public static void evolution()
     {
         Liste<Maillon> tempListe = Data.stockage.clone ();
@@ -195,6 +288,42 @@ public class Methodes
 
         supprimerDublons ();
     }
+
+    public static void mondeAvecFrontieres() {
+        int sizePlace = 10;
+        int xStart = ((Coordonner) (Data.stockage.getFirst ().getCoor ())).getX ();
+        int yStart = ((Coordonner) (Data.stockage.getFirst ().getCoor ())).getY ();
+
+        Maillon<Coordonner> tempMaillon = Data.stockage.getFirst ();
+        while (tempMaillon != null)
+        {
+            int x = tempMaillon.getCoor ().getX ();
+            int y = tempMaillon.getCoor ().getY ();
+            if (x<xStart||y<yStart||x>xStart+sizePlace||y>yStart+sizePlace)
+            {
+                Data.stockage.supprimer (tempMaillon);
+            }
+            tempMaillon = tempMaillon.getSuivant ();
+        }
+        affichage (Data.stockage);
+        evolution();
+        affichage (Data.stockage);
+
+        tempMaillon = Data.stockage.getFirst ();
+        while (tempMaillon != null)
+        {
+            int x = tempMaillon.getCoor ().getX ();
+            int y = tempMaillon.getCoor ().getY ();
+            if (x<xStart||y<yStart||x>xStart+sizePlace||y>yStart+sizePlace)
+            {
+                Data.stockage.supprimer (tempMaillon);
+            }
+            tempMaillon = tempMaillon.getSuivant ();
+        }
+        affichage (Data.stockage);
+    }
+
+
 
     public static void lireFichier(String chemin) throws IOException
     {
