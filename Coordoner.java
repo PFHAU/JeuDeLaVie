@@ -49,16 +49,16 @@ public class Coordoner implements Comparable<Coordoner> {
          return 0;
      }
             if(this.getX()<c.getX()){
-                return -1;
+                return 1;
             }else{
                 if (this.getX()>c.getX()){
-                    return 1;
+                    return -1;
                 }else{
                     if (this.getY()<c.getY()){
-                        return -1;
+                        return 1;
                     }else{
                         if(this.getY()>c.getY()){
-                            return 1;
+                            return -1;
                         }else{
                             return 0;
                         }

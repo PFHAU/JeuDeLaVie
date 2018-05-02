@@ -52,7 +52,7 @@ public class Liste <T extends Maillon> {
      * @param m
      * element de type T que l'on souhaite ajouter  la Liste souhaiter
      */
-    public void addMaillon (T m) {
+   /* public void addMaillon (T m) {
         if (this.first == null) this.first = m;
         else {
             T tmp = this.first;
@@ -62,7 +62,41 @@ public class Liste <T extends Maillon> {
             m.setSuivant(tmp.getSuivant());
             tmp.setSuivant(m);
         }
+    }*/
+    public void add(T addition)
+    {
+        if(first == null || first.compareTo (addition)== -1)
+        {
+            T temp = first;
+            first = addition;
+            first.setSuivant (temp);
+        }
+
+        else
+        {
+            T temp = first;
+            while ( temp != null)
+            {
+                if( temp.getSuivant () != null)
+                {
+                    if(temp.compareTo (addition) > -1 &&  temp.getSuivant ().compareTo (addition) < 1)
+                    {
+                        T conteneur = (T)temp.getSuivant ();
+                        temp.setSuivant( addition);
+                        addition.setSuivant(conteneur);
+                        break;
+                    }
+                }
+                else
+                {
+                    temp.setSuivant( addition);
+                    break;
+                }
+                temp = (T) temp.getSuivant ();
+            }
+        }
     }
+
 
     /**
      * @author Pierre-Francois Hau
@@ -110,7 +144,7 @@ public class Liste <T extends Maillon> {
         while(temp!=null)
         {
             T temporaire = (T)(new Maillon<> (temp.getO (),null));
-            listeClone.addMaillon (temporaire);
+            listeClone.add (temporaire);
             temp= (T)temp.getSuivant ();
         }
         return listeClone;

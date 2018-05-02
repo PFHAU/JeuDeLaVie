@@ -39,7 +39,7 @@ public class Methode {
         * @param liste
         * Liste dont l'on souhaite afficher les cellules
         */
-        public static void affichage(Liste<Maillon> liste) {
+      public static void affichage(Liste<Maillon> liste) {
             final int FRAME_SIZE = 10;
             for (int x = 1; x <= FRAME_SIZE; x++) {
                 for (int y = 1; y <= FRAME_SIZE; y++) {
@@ -176,7 +176,7 @@ public class Methode {
                                 tempRecherche = tempRecherche.getSuivant();
                             }
                             if (count == 3) {
-                                tempListeAdd.addMaillon(new Maillon(new Coordoner(xNear, yNear), null));
+                                tempListeAdd.add(new Maillon(new Coordoner(xNear, yNear), null));
                             }
                         }
                     }
@@ -196,7 +196,7 @@ public class Methode {
             Data.stockage = tempListe;
             Maillon<Coordoner> tempMaillonAdd = tempListeAdd.getFirst();
             while (tempMaillonAdd != null) {
-                Data.stockage.addMaillon(new Maillon(new Coordoner(tempMaillonAdd.getO().getX(), tempMaillonAdd.getO().getY()), null));
+                Data.stockage.add(new Maillon(new Coordoner(tempMaillonAdd.getO().getX(), tempMaillonAdd.getO().getY()), null));
                 tempMaillonAdd = tempMaillonAdd.getSuivant();
             }
 
@@ -250,7 +250,7 @@ public class Methode {
 
                    while (temp!=-1)
                    {
-                       Data.stockage.addMaillon (new Maillon<Coordoner>(new Coordoner (x,y+temp),null));
+                       Data.stockage.add (new Maillon<Coordoner>(new Coordoner (x,y+temp),null));
                        line = line.substring (0,temp);
                        temp = line.lastIndexOf ('*');
                    }
@@ -261,4 +261,63 @@ public class Methode {
 
            supprimerDoublons ();
        }
+  /*  public static void affichage(Liste<Maillon> liste)
+    {
+        Maillon<Coordoner> tempMinMax = liste.getFirst ();
+        int xMin=tempMinMax.getO ().getX ();
+        int xMax = xMin;
+        int yMin = tempMinMax.getO ().getY ();
+        int yMax = yMin;
+        tempMinMax = tempMinMax.getSuivant ();
+        while(tempMinMax != null)
+        {
+            if (tempMinMax.getO ().getX () < xMin)
+            {
+                xMin = tempMinMax.getO ().getX ();
+            }
+            if (tempMinMax.getO ().getY () < yMin)
+            {
+                yMin = tempMinMax.getO ().getY ();
+            }
+            if (tempMinMax.getO ().getX () > xMax)
+            {
+                xMax = tempMinMax.getO ().getX ();
+            }
+            if (tempMinMax.getO ().getY () > yMax)
+            {
+                yMax = tempMinMax.getO ().getY ();
+            }
+            tempMinMax = tempMinMax.getSuivant ();
+        }
+
+        for( int x = xMin; x <= xMax; x++)
+        {
+            for( int y = yMin; y <= yMax; y++)
+            {
+                Maillon<Coordoner> temp = liste.getFirst ();
+                boolean marque = false;
+                while(temp != null)
+                {
+                    if (x == temp.getO ().getX () && y == temp.getO ().getY ())
+                    {
+                        marque = true;
+                        break;
+                    }
+                    temp = temp.getSuivant ();
+                }
+                if(marque)
+                {
+                    System.out.print ('*');
+                }
+                else
+                {
+                    System.out.print ('.');
+                }
+            }
+            System.out.println ();
+
+        }
+        System.out.println ();
+
+    }*/
    }
