@@ -103,7 +103,7 @@ public class Liste <T extends Maillon> {
      * @param m
      * element de type T que l'on souhaite retirer de la Liste souhaiter
      */
-    public void remove(T m) {
+    /*public void removet(T m) {
         Maillon tmp = this.getFirst();
         while (tmp!=null&& tmp.getSuivant()!=null) {
             if (tmp.compareTo(this.getFirst()) == 0) {
@@ -113,6 +113,33 @@ public class Liste <T extends Maillon> {
                 tmp.setSuivant(tmp.getSuivant().getSuivant());
             }
             tmp = tmp.getSuivant();
+        }
+
+    }*/
+    public void remove (T m)
+    {
+        if (first.getO ().compareTo (m.getO ()) == 0)
+        {
+            first = (T) first.getSuivant ();
+        }
+        else
+        {
+            //tmp-dexièm élément de la liste
+            T tmp = (T) first.getSuivant ();
+            //tmpPrevious-premier élément
+            T précédent = first;
+
+            while (tmp != null)
+            {
+                if (tmp.getO ().compareTo (m.getO ()) == 0)
+                {
+                    précédent.setSuivant (tmp.getSuivant ());
+                    break;
+                }
+                précédent = (T) précédent.getSuivant ();
+                tmp = (T) tmp.getSuivant ();
+
+            }
         }
     }
 
