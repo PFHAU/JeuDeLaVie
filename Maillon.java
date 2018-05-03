@@ -5,93 +5,84 @@ public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>>
    private T o;
    private Maillon suivant;
 
+    /**
+     * @author Pierre-Francois Hau
+     * @param o
+     * le type T du Maillon
+     * @param suivant
+     * le Maillon lier au Maillon par le mot suivant indiquant qu'il est placer apres dans une liste
+     */
     public Maillon(T o, Maillon suivant) {
         this.o = o;
         this.suivant = suivant;
     }
 
+    /**
+     * @author Pierre-Francois Hau
+     * @return o
+     */
     public T getO() {
         return o;
     }
 
+    /**
+     * @author Pierre-Francois Hau
+     * @param o
+     * le type T que l'on souhaite placer dans le Maillon souhaiter
+     */
     public void setO(T o) {
         this.o = o;
     }
 
+    /**
+     * @author Pierre-Francois Hau
+     * @return le maillon suivant du maillon souhaiter
+     */
     public Maillon<T> getSuivant() {
         return suivant;
     }
 
+    /**
+     * @author Pierre-Francois Hau
+     * @param suivant
+     * le Maillon que l'on souhaite lier au Maillon souhaiter
+     */
     public void setSuivant(Maillon suivant) {
         this.suivant = suivant;
     }
 
+    /**
+     * @author Pierre-Francois Hau
+     * @param l
+     * Maillon l avec lequel l'on souhaite verifier l'egualiter avec le Maillon souhaiter
+     * @return true si le parametre est egale au maillon souhaiter et false sinon
+     */
     public boolean equals(Maillon l) {
         return l.getO() == this.getO();
     }
 
-    public void remove(Liste l) {
-        Maillon tmp = l.getFirst();
-        while (tmp!=null&& tmp.suivant!=null) {
-            if (tmp.compareTo(l.getFirst()) == 0) {
-                l.setFirst(l.getFirst().getSuivant());
-            }
-            if (tmp.getSuivant().compareTo(this) == 0) {
-                tmp.setSuivant(tmp.suivant.suivant);
-            }
-            tmp = tmp.suivant;
-        }
-    }
-
-   public boolean estDans(Liste l) {
-        Maillon tmp = l.getFirst();
-        while (tmp.suivant.compareTo(null) == 0) {
-            if (tmp.compareTo(this) == 0) {
-                return true;
-            }
-            tmp = tmp.suivant;
-        }
-        return false;
-    }
- /* public boolean estDans(Liste l,T obj){
-      Maillon tmp = l.first;
-      while (tmp.suivant!=null){
-          if (compareTo(tmp,obj)==0)
-      }
-  }*/
-
+    /**
+     * @author Pierre-Francois Hau
+     * @param obj
+     * Maillon que l'on souhaiter comparer avec le Maillon souhaiter
+     * @return -1 si le maillon est inferieur au parametre m, 0 si ils sont egaux et 1 si le parametre m est inferieur au maillon
+     */
     public int compareTo(Maillon<T> obj) {
 
-        return (this.o).compareTo(obj.o);
+        return this.o.compareTo(obj.o);
 
    }
-    /*public int compareTo(T obj,T obj2){
-        return ((Maillon) obj).o.compareTo(((Maillon) obj).o);
-    }*/
+
+    /**
+     * @author Pierre-Francois Hau
+     * @return le Maillon souhaiter sous forme de String
+     */
+    public String toString(){
+        String str =new String();
+        return str = o.toString();
+    }
 
 }
-    /* public int compareTo (Maillon m) {
-        if (m.c.x < this.c.x) {
-            return 1;
-        } else {
-            if (this.c.x < m.c.x) {
-                return -1;
-            } else {
-                if (this.c.x == m.c.x) {
-                    if (m.c.y < this.c.y) {
-                        return 1;
-                    }
-                    if (this.c.y < m.c.y) {
-                        return -1;
-                    }
-                    if (this.c.x == m.c.x) {
-                        return 0;
-                    }
-                }
-            }
-        } return 404;
-    }*/
-
 
 
 

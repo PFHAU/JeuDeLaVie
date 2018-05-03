@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.awt.Event;
 
 public class Affichageplateau {
-    public Liste liste;
+   /* public Liste liste;
 
     public Affichageplateau (Liste liste){
        liste=liste;
@@ -32,4 +32,4 @@ public class Affichageplateau {
     Coordoner c =new Coordoner(5,6);
 
     }
-}
+*/}
