@@ -79,4 +79,4 @@ package Projet;
             System.out.println ( Data.NOM_1 + "; " + Data.NOM_2 + "; " + Data.NOM_3 +"; " + Data.NOM_4);
         }
     }
-}
+

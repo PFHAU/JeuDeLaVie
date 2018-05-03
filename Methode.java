@@ -152,8 +152,6 @@ public class Methode {
                 }
                 tempMaillon = tempMaillon.getSuivant();
             }
-            //Donnee.stockage = tempListe;
-
 
             Liste<Maillon> tempListeAdd = new Liste();
             tempMaillon = Data.stockage.getFirst();
@@ -183,14 +181,6 @@ public class Methode {
                 }
                 tempMaillon = tempMaillon.getSuivant();
             }
-            //System.out.println ("-----------------------------------");
-            //System.out.println ();
-            //System.out.println ("Ce qu'on a après la suppression");
-            //affichage (tempListe);
-
-
-            //System.out.println ("Ce qu'on va ajouter");
-            //affichage (tempListeAdd);
 
 
             Data.stockage = tempListe;
@@ -201,7 +191,7 @@ public class Methode {
             }
 
 
-            // System.out.println ("résultat");
+
             //supprimer les doublons
             tempMaillon = Data.stockage.getFirst();
             while (tempMaillon != null) {
@@ -219,7 +209,7 @@ public class Methode {
                 }
                 tempMaillon = tempMaillon.getSuivant();
             }
-            //affichage (Data.stockage);
+
 
         }
 
@@ -261,63 +251,4 @@ public class Methode {
 
            supprimerDoublons ();
        }
-  /*  public static void affichage(Liste<Maillon> liste)
-    {
-        Maillon<Coordoner> tempMinMax = liste.getFirst ();
-        int xMin=tempMinMax.getO ().getX ();
-        int xMax = xMin;
-        int yMin = tempMinMax.getO ().getY ();
-        int yMax = yMin;
-        tempMinMax = tempMinMax.getSuivant ();
-        while(tempMinMax != null)
-        {
-            if (tempMinMax.getO ().getX () < xMin)
-            {
-                xMin = tempMinMax.getO ().getX ();
-            }
-            if (tempMinMax.getO ().getY () < yMin)
-            {
-                yMin = tempMinMax.getO ().getY ();
-            }
-            if (tempMinMax.getO ().getX () > xMax)
-            {
-                xMax = tempMinMax.getO ().getX ();
-            }
-            if (tempMinMax.getO ().getY () > yMax)
-            {
-                yMax = tempMinMax.getO ().getY ();
-            }
-            tempMinMax = tempMinMax.getSuivant ();
-        }
-
-        for( int x = xMin; x <= xMax; x++)
-        {
-            for( int y = yMin; y <= yMax; y++)
-            {
-                Maillon<Coordoner> temp = liste.getFirst ();
-                boolean marque = false;
-                while(temp != null)
-                {
-                    if (x == temp.getO ().getX () && y == temp.getO ().getY ())
-                    {
-                        marque = true;
-                        break;
-                    }
-                    temp = temp.getSuivant ();
-                }
-                if(marque)
-                {
-                    System.out.print ('*');
-                }
-                else
-                {
-                    System.out.print ('.');
-                }
-            }
-            System.out.println ();
-
-        }
-        System.out.println ();
-
-    }*/
    }

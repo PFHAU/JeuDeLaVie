@@ -49,20 +49,9 @@ public class Liste <T extends Maillon> {
 
     /**
      * @author Pierre-Francois Hau
-     * @param m
+     * @param addition
      * element de type T que l'on souhaite ajouter  la Liste souhaiter
      */
-   /* public void addMaillon (T m) {
-        if (this.first == null) this.first = m;
-        else {
-            T tmp = this.first;
-            while (m.compareTo(tmp) == -1) {
-                tmp = (T) tmp.getSuivant();
-            }
-            m.setSuivant(tmp.getSuivant());
-            tmp.setSuivant(m);
-        }
-    }*/
     public void add(T addition)
     {
         if(first == null || first.compareTo (addition)== -1)
@@ -103,19 +92,6 @@ public class Liste <T extends Maillon> {
      * @param m
      * element de type T que l'on souhaite retirer de la Liste souhaiter
      */
-    /*public void removet(T m) {
-        Maillon tmp = this.getFirst();
-        while (tmp!=null&& tmp.getSuivant()!=null) {
-            if (tmp.compareTo(this.getFirst()) == 0) {
-                this.setFirst((T) this.getFirst().getSuivant());
-            }
-            if (tmp.getSuivant().compareTo(m) == 0) {
-                tmp.setSuivant(tmp.getSuivant().getSuivant());
-            }
-            tmp = tmp.getSuivant();
-        }
-
-    }*/
     public void remove (T m)
     {
         if (first.getO ().compareTo (m.getO ()) == 0)

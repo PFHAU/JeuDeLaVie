@@ -63,41 +63,6 @@ public class Maillon <T extends Comparable<T>> implements Comparable<Maillon<T>>
 
     /**
      * @author Pierre-Francois Hau
-     * @param l
-     * Liste l dans laquel l'on souhaite retirer le maillon souhaiter
-     */
-    public void remove(Liste l) {
-        Maillon tmp = l.getFirst();
-        while (tmp!=null&& tmp.suivant!=null) {
-            if (tmp.compareTo(l.getFirst()) == 0) {
-                l.setFirst(l.getFirst().getSuivant());
-            }
-            if (tmp.getSuivant().compareTo(this) == 0) {
-                tmp.setSuivant(tmp.suivant.suivant);
-            }
-            tmp = tmp.suivant;
-        }
-    }
-
-    /**
-     * @author Pierre-Francois Hau
-     * @param l
-     * Liste l dans laquel on souhaite verifier la presence du maillon souhaiter
-     * @return true si le maillon souhaiter est dans la liste indiquer en parametre et false sinon
-     */
-   public boolean estDans(Liste l) {
-        Maillon tmp = l.getFirst();
-        while (tmp.suivant.compareTo(null) == 0) {
-            if (tmp.compareTo(this) == 0) {
-                return true;
-            }
-            tmp = tmp.suivant;
-        }
-        return false;
-    }
-
-    /**
-     * @author Pierre-Francois Hau
      * @param obj
      * Maillon que l'on souhaiter comparer avec le Maillon souhaiter
      * @return -1 si le maillon est inferieur au parametre m, 0 si ils sont egaux et 1 si le parametre m est inferieur au maillon

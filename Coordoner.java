@@ -43,8 +43,7 @@ public class Coordoner implements Comparable<Coordoner> {
      * @return -1 si la Coordoner souhaiter est inferieur
      */
     public int compareTo(Coordoner c){
-     /*   if(this==null){return -2;}
-        if(c==null){return -2;}*/
+
      if(c==null){
          return 0;
      }
