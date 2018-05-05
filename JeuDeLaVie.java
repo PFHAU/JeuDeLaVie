@@ -4,8 +4,7 @@ import java.io.IOException;
 
 public class JeuDeLaVie
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException {
 
         if (args.length!=0)
         {
@@ -13,7 +12,7 @@ public class JeuDeLaVie
             {
                 case "test":
                     Liste<Maillon> testListe = new Liste<> ();
-                     try{
+                     /*try{
                          Methodes.lireFichier("C:\\Users\\Sony\\IdeaProjects\\src\\com\\france\\JeuDeLaVie\\data.lif");
                      }
                      catch (IOException e )
@@ -22,9 +21,9 @@ public class JeuDeLaVie
                      }
                     Methodes.affichage (Data.stockage);
                     Methodes.mondeAvecFrontieres ();
-                    Methodes.affichage (Data.stockage);
+                    Methodes.affichage (Data.stockage);*/
 
-                   /* testListe.add (new Maillon (new Coordonner (10,10),null));
+                    /*testListe.add (new Maillon (new Coordonner (10,10),null));
                     testListe.add (new Maillon (new Coordonner (3,8),null));
                     testListe.add (new Maillon (new Coordonner (5,5),null));
                     testListe.add (new Maillon (new Coordonner (3,3),null));
@@ -37,7 +36,8 @@ public class JeuDeLaVie
                     Methodes.affichage (Data.stockage);
                     Methodes.evolution ();
                     Methodes.affichage (Data.stockage);
-                    Methodes.evolution ();
+                    System.out.println (Data.stockage.toString ());
+                   /* Methodes.evolution ();
                     Methodes.affichage (Data.stockage);*/
                     break;
                 case "-name":
@@ -46,7 +46,7 @@ public class JeuDeLaVie
                 case "-h":
                     help();
                     break;
-                case "-d":
+                case "-s":
                     execution(Integer.parseInt (args[1]),args[2]);
                     break;
                 case "-c":
@@ -73,9 +73,22 @@ public class JeuDeLaVie
     {
 
     }
-    private static void execution(int d, String image)
-    {
+    private static void execution(int d, String chemin) throws IOException {
+        Methodes.lireFichier (chemin);
+        for (int i = 1; i <= d; i++)
+        {
+            Methodes.evolution ();
+            System.out.println ("\n\n\n\n\n\n\n\n\n\n\n");
 
+            Methodes.affichage (Data.stockage);
+            System.out.println ();
+            System.out.println ("Le numéro de génération: "+i);
+            try {
+                Thread.sleep (3_000);
+            } catch (InterruptedException e) {
+                e.printStackTrace ();
+            }
+        }
     }
     private static void calculerType(int max, String image,boolean b)
     {
