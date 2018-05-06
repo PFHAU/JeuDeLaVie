@@ -1,7 +1,7 @@
 package Projet;
 import java.io.*;
 
-public class Liste <T extends Maillon> {
+public class Liste <T extends Maillon> implements Comparable<Coordoner> {
 
     private T first;
 
@@ -169,4 +169,8 @@ public class Liste <T extends Maillon> {
         return string;
     }
 
+    @Override
+    public int compareTo(Coordoner o) {
+        return 0;
+    }
 }
