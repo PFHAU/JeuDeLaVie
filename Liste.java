@@ -1,7 +1,7 @@
 package Projet;
 import java.io.*;
 
-public class Liste <T extends Maillon> implements Comparable<Coordoner> {
+public class Liste <T extends Maillon> {
 
     private T first;
 
